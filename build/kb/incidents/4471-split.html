@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="../../_app/immutable/entry/start.Cqy3WED5.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/BbhaG0vY.js" rel="modulepreload">
+    <link href="../../_app/immutable/entry/start.B-MSY2_0.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DQ5xzW1e.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/DgZ7eMIM.js" rel="modulepreload">
-		<link href="../../_app/immutable/entry/app.JWmUho6r.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.NJwlvM2X.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
 		<link href="../../_app/immutable/nodes/0.FtfD6PNt.js" rel="modulepreload">
-		<link href="../../_app/immutable/nodes/5.C0Uo97nG.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/-pssGAhk.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/5.CotCYeGm.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DOG3ghT4.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/BUobAEgd.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/7UuIDjWG.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/BlNrTger.js" rel="modulepreload">
@@ -21,8 +21,11 @@
 		<link href="../../_app/immutable/assets/_page.Csy-CsX1.css" rel="stylesheet">
   </head>
   <body>
-    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 split: three problems, not one</h1> <p class="meta svelte-e2jw2j"><span>owner <b>luís</b></span> <span class="status open svelte-e2jw2j">open</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> holds <strong>412</strong><!----> reports about dates, merged as one
-issue and marked known. They are three problems. Each one has its own fix, and each now has its own ticket.</p> <aside class="warn svelte-17bri61"><!---->Not known. Fixing the parser closes only the first row below. The other two stay open.<!----></aside><!----> <h2>The split</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports in #4471 (427 rows in the export, 15 of them repeats) · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td><code>parser</code><!--[-1--><!--]--></td><td>379</td><td class="small svelte-1op6c6">11</td><td class="small svelte-1op6c6">2026-04-01 → 2026-10-04</td><td><!--[0--><a href="https://github.com/lgsilvaesilva/mega-s01e03-support-kb/issues/1">#1</a><!--]--></td></tr><tr><td><code>hint</code><!--[-1--><!--]--></td><td>33</td><td class="small svelte-1op6c6">alder.physio, copper.studio, pale.harbour</td><td class="small svelte-1op6c6">2026-04-17 → 2026-09-22</td><td><!--[0--><a href="https://github.com/lgsilvaesilva/mega-s01e03-support-kb/issues/2">#2</a><!--]--></td></tr><tr><td><code>one-day move</code><!--[0--><span class="small svelte-1op6c6">· also counted under parser</span><!--]--></td><td>5</td><td class="small svelte-1op6c6">5</td><td class="small svelte-1op6c6">2026-04-02 → 2026-10-04</td><td><!--[0--><a href="https://github.com/lgsilvaesilva/mega-s01e03-support-kb/issues/3">#3</a><!--]--></td></tr><!--]--></tbody></table><!----> <ul><li><strong>parser.</strong> The shared parser reads every date month first. Our tenants write the day first, so
+    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 split: three problems, not one</h1> <p class="meta svelte-e2jw2j"><span>owner <b>luís</b></span> <span class="status resolved svelte-e2jw2j">resolved</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> holds <strong>412</strong><!----> reports about dates, merged as one
+issue and marked known. They are three problems, each with its own ticket. Engineering closed #4471
+on 5 October; the outcome differs per problem.</p> <aside class="warn svelte-17bri61"><!---->Fixing the parser closed only the first row below. The hint problem ended with its form; the
+one-day move was not part of the fix.<!----></aside><!----> <h2>Outcome</h2> <ul><li><strong>parser:</strong> fixed, <code>fix(dates): parse dd/mm for eu locales</code>.</li> <li><strong>hint:</strong> won’t fix. The booking-v3 form is retired.</li> <li><strong>one-day move:</strong> not covered by the engineering update. Its ticket is closed as not planned;
+reopen it when a report like these comes in again.</li></ul> <h2>The split</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports in #4471 (427 rows in the export, 15 of them repeats) · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td><code>parser</code><!--[-1--><!--]--></td><td>379</td><td class="small svelte-1op6c6">11</td><td class="small svelte-1op6c6">2026-04-01 → 2026-10-04</td><td><!--[0--><a href="https://github.com/lgsilvaesilva/mega-s01e03-support-kb/issues/1">#1</a><!--]--></td></tr><tr><td><code>hint</code><!--[-1--><!--]--></td><td>33</td><td class="small svelte-1op6c6">alder.physio, copper.studio, pale.harbour</td><td class="small svelte-1op6c6">2026-04-17 → 2026-09-22</td><td><!--[0--><a href="https://github.com/lgsilvaesilva/mega-s01e03-support-kb/issues/2">#2</a><!--]--></td></tr><tr><td><code>one-day move</code><!--[0--><span class="small svelte-1op6c6">· also counted under parser</span><!--]--></td><td>5</td><td class="small svelte-1op6c6">5</td><td class="small svelte-1op6c6">2026-04-02 → 2026-10-04</td><td><!--[0--><a href="https://github.com/lgsilvaesilva/mega-s01e03-support-kb/issues/3">#3</a><!--]--></td></tr><!--]--></tbody></table><!----> <ul><li><strong>parser.</strong> The shared parser reads every date month first. Our tenants write the day first, so
 day and month swap: 7 April arrives as 4 July. Every tenant, every channel.</li> <li><strong>hint.</strong> The booking-v3 form prints <code>MM/DD/YYYY</code> under its date field. People type what it
 says; the form then reads the date the tenant’s way, day first. Only the form channel, only tenants
 on booking-v3. The parser fix does not touch it: the form needs the hint its tenant writes.</li> <li><strong>one-day move.</strong> <strong>5</strong><!----> reports where the date is
@@ -37,15 +40,15 @@ tenant gives it. The one-day moves stay under <code>parser</code> and also make 
 			
 			<script>
 				{
-					__sveltekit_ds4fmn = {
+					__sveltekit_oftrtd = {
 						base: new URL("../..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../../_app/immutable/entry/start.Cqy3WED5.js"),
-						import("../../_app/immutable/entry/app.JWmUho6r.js")
+						import("../../_app/immutable/entry/start.B-MSY2_0.js"),
+						import("../../_app/immutable/entry/app.NJwlvM2X.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 5],

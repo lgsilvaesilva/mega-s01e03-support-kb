@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 split: three problems, not one'
 owner: luís
-status: open
+status: resolved
 reviewed: 2026-10-28
 signature: v1.eyJzdWIiOiI0NTU3IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMTYyMTcsImV4cCI6MTc5MzMwMjYxN30.GK-2gvWhjXt8d7faXVelswf_8TC6MYYKJQxljd2JkpI
 ---
@@ -23,11 +23,20 @@ signature: v1.eyJzdWIiOiI0NTU3IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYX
 </script>
 
 [#4471](/kb/incidents/4471) holds <ProblemCount ticket={4471} /> reports about dates, merged as one
-issue and marked known. They are three problems. Each one has its own fix, and each now has its own ticket.
+issue and marked known. They are three problems, each with its own ticket. Engineering closed #4471
+on 5 October; the outcome differs per problem.
 
 <Callout kind="warn">
-Not known. Fixing the parser closes only the first row below. The other two stay open.
+Fixing the parser closed only the first row below. The hint problem ended with its form; the
+one-day move was not part of the fix.
 </Callout>
+
+## Outcome
+
+- **parser:** fixed, `fix(dates): parse dd/mm for eu locales`.
+- **hint:** won't fix. The booking-v3 form is retired.
+- **one-day move:** not covered by the engineering update. Its ticket is closed as not planned;
+  reopen it when a report like these comes in again.
 
 ## The split
 
