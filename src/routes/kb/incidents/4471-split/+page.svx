@@ -1,0 +1,64 @@
+---
+layout: runbook
+title: '#4471 split: three problems, not one'
+owner: luís
+status: open
+reviewed: 2026-10-28
+signature: v1.eyJzdWIiOiI0NTU3IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMTYyMTcsImV4cCI6MTc5MzMwMjYxN30.GK-2gvWhjXt8d7faXVelswf_8TC6MYYKJQxljd2JkpI
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import ProblemCount from '#lib/kb/ProblemCount.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const repo = 'https://github.com/lgsilvaesilva/mega-s01e03-support-kb/issues';
+  const tickets = {
+    parser: `${repo}/1`,
+    hint: `${repo}/2`,
+    'one-day move': `${repo}/3`,
+  };
+</script>
+
+[#4471](/kb/incidents/4471) holds <ProblemCount ticket={4471} /> reports about dates, merged as one
+issue and marked known. They are three problems. Each one has its own fix, and each now has its own ticket.
+
+<Callout kind="warn">
+Not known. Fixing the parser closes only the first row below. The other two stay open.
+</Callout>
+
+## The split
+
+<ProblemTable ticket={4471} {tickets} />
+
+- **parser.** The shared parser reads every date month first. Our tenants write the day first, so
+  day and month swap: 7 April arrives as 4 July. Every tenant, every channel.
+- **hint.** The booking-v3 form prints `MM/DD/YYYY` under its date field. People type what it
+  says; the form then reads the date the tenant's way, day first. Only the form channel, only tenants
+  on booking-v3. The parser fix does not touch it: the form needs the hint its tenant writes.
+- **one-day move.** <ProblemCount ticket={4471} problem="one-day move" /> reports where the date is
+  off by one day, not swapped: "Lisbon got Tuesday, Toronto got Monday. Same meeting." That is a
+  time zone, not an order of fields. The desk saw them (`desk-notes.json`), but filed them under
+  `parser` by tenant.
+
+## Why it merged as one
+
+[Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges reports on subject alone. All three
+problems arrive as "wrong date", so subject matching cannot tell them apart. Intake's tag cannot
+either: it is guessed from the reporter's browser, not from the tenant, and disagrees with the
+tenant's cause on many reports in this ticket. Count by what the report describes and where it came
+from, not by its subject or its tag.
+
+## How the counts are made
+
+- One id, one report. The export pages overlap, so some reports appear twice; each counts once.
+- The cause comes from the tenant (locale and booking form, `causes.ts`), never from `intakeTag`.
+- A report the desk read as a one-day move is no swap, so it leaves `parser` (`problems.ts`).
+
+For comparison, the incident page's own table, which still counts the one-day moves under `parser`:
+
+<CauseTable ticket={4471} />
+
+<RenderStamp {signature} />

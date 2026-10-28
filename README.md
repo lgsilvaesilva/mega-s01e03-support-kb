@@ -34,3 +34,8 @@ Support desk. Decision records: whoever signed them.
 ---
 
 Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
+
+## Building
+
+`npm install && npm run build` renders every page to `build/` (SvelteKit + mdsvex, static).
+`build/kb/incidents/4471-split.html` is the #4471 split page as the desk sees it.
