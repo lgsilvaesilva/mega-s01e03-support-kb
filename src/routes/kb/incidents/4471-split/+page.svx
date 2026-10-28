@@ -40,8 +40,9 @@ Not known. Fixing the parser closes only the first row below. The other two stay
   on booking-v3. The parser fix does not touch it: the form needs the hint its tenant writes.
 - **one-day move.** <ProblemCount ticket={4471} problem="one-day move" /> reports where the date is
   off by one day, not swapped: "Lisbon got Tuesday, Toronto got Monday. Same meeting." That is a
-  time zone, not an order of fields. The desk saw them (`desk-notes.json`), but filed them under
-  `parser` by tenant.
+  time zone, not an order of fields. The desk saw them (`desk-notes.json`) and files them under
+  `parser` by tenant; they stay counted there, as in the desk's own table, and are counted again here
+  as their own problem.
 
 ## Why it merged as one
 
@@ -55,9 +56,10 @@ from, not by its subject or its tag.
 
 - One id, one report. The export pages overlap, so some reports appear twice; each counts once.
 - The cause comes from the tenant (locale and booking form, `causes.ts`), never from `intakeTag`.
-- A report the desk read as a one-day move is no swap, so it leaves `parser` (`problems.ts`).
+- Counts follow the desk's own view (`CauseTable`, as exported): each report under the cause its
+  tenant gives it. The one-day moves stay under `parser` and also make their own row (`problems.ts`).
 
-For comparison, the incident page's own table, which still counts the one-day moves under `parser`:
+The desk's own table, for comparison:
 
 <CauseTable ticket={4471} />
 

@@ -1,14 +1,14 @@
 <script lang="ts">
   import reports from '#lib/data/reports-4471.json';
   import notes from '#lib/data/desk-notes.json';
-  import { uniqueById, type Report } from '#lib/kb/causes';
+  import { type Report } from '#lib/kb/causes';
   import { tenantOf } from '#lib/kb/locales';
-  import { splitTicket } from '#lib/kb/problems';
+  import { splitTicket, ticketReports } from '#lib/kb/problems';
 
   // `tickets`: problem → where it is tracked now (a link), written by the page.
   let { ticket, tickets = {} }: { ticket: number; tickets?: Record<string, string> } = $props();
 
-  const all = $derived(uniqueById(reports as Report[]).filter((r) => r.mergedInto === ticket));
+  const all = $derived(ticketReports(reports as Report[], ticket));
   const groups = $derived(splitTicket(reports as Report[], ticket, tenantOf, notes.oneDayMove));
   const rows = $derived((reports as Report[]).filter((r) => r.mergedInto === ticket).length);
 </script>
@@ -25,7 +25,7 @@
   <tbody>
     {#each groups as g (g.problem)}
       <tr>
-        <td><code>{g.problem}</code></td>
+        <td><code>{g.problem}</code>{#if g.alsoIn.length}<span class="small"> · also counted under {g.alsoIn.join(', ')}</span>{/if}</td>
         <td>{g.ids.length}</td>
         <td class="small">{g.tenants.length <= 3 ? g.tenants.join(', ') : g.tenants.length}</td>
         <td class="small">{g.firstSeen} → {g.lastSeen}</td>
